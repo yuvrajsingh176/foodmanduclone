@@ -3,8 +3,7 @@ import React from 'react'
 const RestaurantDetail = () => {
   return (
     <div>
-        restaurant detail
-      
+      RestaurantDetail
     </div>
   )
 }
