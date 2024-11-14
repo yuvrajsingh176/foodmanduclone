@@ -1,6 +1,7 @@
 import { RiMapPin2Fill } from "react-icons/ri";
 import { MdPedalBike } from "react-icons/md";
 import { IoFastFood } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   const { propData } = props;
@@ -12,7 +13,10 @@ const Card = (props) => {
     CuisineTags,
   } = propData;
   return (
-    <div className="border-[1px] shadow-md border-black w-fit rounded-md">
+    <Link
+      to={"/restaurants/details/" + propData?.Id}
+      className="border-[1px] shadow-md border-black w-fit rounded-md"
+    >
       <img
         className="h-52 w-96 rounded-md"
         src={VendorListingWebImageName}
@@ -35,7 +39,7 @@ const Card = (props) => {
           {CuisineTags}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

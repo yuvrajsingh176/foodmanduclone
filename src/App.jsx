@@ -9,10 +9,19 @@ import RestaurantLayout from "./components/RestaurantLayout";
 function App() {
   return (
     <div className="">
-      <Header />
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="restaurants" element={<RestaurantLayout />}>
+              <Route index element={<Restaurants />} />
+              <Route path="details/:id" element={<RestaurantDetail />} />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-  
+
 export default App;
