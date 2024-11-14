@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { backgroundimage } from "../constants";
 import Card from "./Card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   const [restaurantData, setRestaurantData] = useState([]);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+  // hook
 
   const getRestaurantDetail = async () => {
     const data = await fetch(
@@ -26,20 +29,33 @@ const Home = () => {
         <div className="text-lg flex-col absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
           <p className="font-bold">Order food from the widest range of</p>
           <p className="font-bold">restaurants.</p>
+
           <div className="flex gap-4 mt-4">
             <input
               className="p-4 w-96 rounded-xl"
               placeholder="Restaurants or cuisine"
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+              value={query}
+              onKeyDown={(e) => {
+                console.log(e);
+                if (e.code === "Enter") {
+                  navigate("/restaurants?query=" + query);
+                }
+              }}
             />
-            <button className="bg-[#FFDD00] p-4 rounded-xl">
-              Find Restaurants
-            </button>
+            <Link to={"/restaurants?query=" + query}>
+              <button className="bg-[#FFDD00] p-4 rounded-xl">
+                Find Restaurants
+              </button>
+            </Link>
           </div>
         </div>
       </div>
       <div className=" mx-8 flex justify-between py-4">
         <p className="font-bold text-xl">FEATURED RESTAURANTS</p>
-        <Link to='restaurants'  className="flex items-center font-bold text-xl">
+        <Link to="restaurants" className="flex items-center font-bold text-xl">
           View All
           <FaArrowRight className="ml-4" />
         </Link>
