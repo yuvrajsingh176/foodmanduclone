@@ -13,12 +13,9 @@ const Card = (props) => {
     CuisineTags,
   } = propData;
   return (
-    <Link
-      to={"/restaurants/details/" + propData?.Id}
-      className="border-[1px] shadow-md border-black w-fit rounded-md"
-    >
+    <div className=" h-80 w-96 border-[1px] shadow-md border-black  rounded-md">
       <img
-        className="h-52 w-96 rounded-md"
+        className="h-1/2 w-full rounded-md"
         src={VendorListingWebImageName}
         alt=""
       />
@@ -34,9 +31,11 @@ const Card = (props) => {
             {DeliveryDistanceStr}
           </div>
         </div>
-        <div className="flex items-center">
-          <IoFastFood />
-          {CuisineTags}
+        <div className="flex items-center overflow-hidden whitespace-nowrap text-ellipsis">
+        <span className=" items-start flex justify-start">
+        <IoFastFood />
+        </span>
+          <span className="ml-1 overflow-hidden whitespace-nowrap text-ellipsis">{CuisineTags}</span>
         </div>
       </div>
     </Link>
