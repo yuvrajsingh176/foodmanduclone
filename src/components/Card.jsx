@@ -1,7 +1,7 @@
 import { RiMapPin2Fill } from "react-icons/ri";
 import { MdPedalBike } from "react-icons/md";
 import { IoFastFood } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Card = (props) => {
   const { propData } = props;
@@ -12,8 +12,14 @@ const Card = (props) => {
     DeliveryDistanceStr,
     CuisineTags,
   } = propData;
+  const navigate = useNavigate();
   return (
-    <div className=" h-80 w-96 border-[1px] shadow-md border-black  rounded-md">
+    <div
+      onClick={() => {
+        navigate("/restaurants/details/" + propData.Id);
+      }}
+      className=" h-80 w-96 border-[1px] shadow-md border-black  rounded-md"
+    >
       <img
         className="h-1/2 w-full rounded-md"
         src={VendorListingWebImageName}
@@ -32,13 +38,15 @@ const Card = (props) => {
           </div>
         </div>
         <div className="flex items-center overflow-hidden whitespace-nowrap text-ellipsis">
-        <span className=" items-start flex justify-start">
-        <IoFastFood />
-        </span>
-          <span className="ml-1 overflow-hidden whitespace-nowrap text-ellipsis">{CuisineTags}</span>
+          <span className=" items-start flex justify-start">
+            <IoFastFood />
+          </span>
+          <span className="ml-1 overflow-hidden whitespace-nowrap text-ellipsis">
+            {CuisineTags}
+          </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

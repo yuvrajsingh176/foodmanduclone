@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <Link to='/' className="bg-white p-4 flex  justify-between shadow-lg">
+    <div className="bg-white p-4 flex  justify-between shadow-lg">
       <img
         onClick={() => {
           navigate("/");
@@ -17,7 +17,7 @@ const Header = () => {
         <FaShoppingCart className="h-10 w-10" />
         <h1>10</h1>
       </div>
-    </Link >
+    </div>
   );
 };
 

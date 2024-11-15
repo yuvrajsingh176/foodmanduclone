@@ -8,7 +8,6 @@ import { FaArrowRight } from "react-icons/fa";
 const Home = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [query, setQuery] = useState("");
-  const navigate = useNavigate();  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   // hook
 
@@ -52,6 +51,7 @@ const Home = () => {
                 Find Restaurants
               </button>
             </Link>
+            <input
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
