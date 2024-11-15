@@ -11,12 +11,15 @@ const Card = (props) => {
     Address1,
     DeliveryDistanceStr,
     CuisineTags,
+    Id
   } = propData;
+  
   const navigate = useNavigate();
+
   return (
     <div
       onClick={() => {
-        navigate("/restaurants/details/" + propData.Id);
+        navigate("/restaurants/details/" + Id);
       }}
       className=" h-80 w-96 border-[1px] shadow-md border-black  rounded-md"
     >

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { backgroundimage } from "../constants";
 import Card from "./Card";
 import { Link, useNavigate } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
@@ -40,7 +39,6 @@ const Home = () => {
               }}
               value={query}
               onKeyDown={(e) => {
-                console.log(e);
                 if (e.code === "Enter") {
                   navigate("/restaurants?query=" + query);
                 }
@@ -51,24 +49,7 @@ const Home = () => {
                 Find Restaurants
               </button>
             </Link>
-            <input
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                console.log(e);
-                if (e.code === "Enter") {
-                  navigate("restaurants?query=" + query);
-                }
-              }}
-            />
-            <Link
-              to={"restaurants?query=" + query}
-              className="bg-[#FFDD00] p-4 rounded-xl"
-            >
-              Find Restaurants
-            </Link>
+         
           </div>
         </div>
       </div>

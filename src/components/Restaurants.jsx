@@ -4,8 +4,9 @@ import { useSearchParams } from "react-router-dom";
 
 const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const [searchParam] = useSearchParams();
-  const query = searchParam.get('query');
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
+  console.log(query);
 
   const fetchRestaurants = async () => {
     const data = await fetch(
@@ -14,6 +15,7 @@ const Restaurants = () => {
     const jsonData = await data.json();
     setRestaurants(jsonData);
   };
+
   useEffect(() => {
     fetchRestaurants();
   }, []);
