@@ -15,7 +15,7 @@ const RestaurantDetail = () => {
         "https://foodmandu.com/webapi/api/vendor/GetVendorDetail?VendorId=" + id
       );
       const jsonData = await data.json();
-      setVendorData(jsonData);
+      setVendorData(jsonData[0]);
     } catch (e) {
       console.log(e);
     }
@@ -38,8 +38,17 @@ const RestaurantDetail = () => {
     getVendorDetail(id);
     getCategoryData(id);
   }, []);
-  console.log(vendorData[0]);
-  return <div></div>;
+  console.log(vendorData);
+
+  return (
+    <div>
+      <img
+        src={vendorData.VendorCoverImageName}
+        alt=""
+        className="h-[512px] w-full bg-cover"
+      />
+    </div>
+  );
 };
 
 export default RestaurantDetail;
