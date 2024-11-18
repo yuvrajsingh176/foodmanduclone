@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { IoFastFood } from "react-icons/io5";
 import { IoPin } from "react-icons/io5";
+import CategoryFoodDesc from "./CategoryFoodDesc";
 
 //ShortName Cuisine Address1 VendorCoverImageName MinimumOrderAmount ServiceCharge VAT VendorLogoImageName
 const RestaurantDetail = () => {
@@ -41,7 +42,7 @@ const RestaurantDetail = () => {
     getVendorDetail(id);
     getCategoryData(id);
   }, []);
-  console.log(vendorData);
+  console.log(categoryData);
 
   return (
     <div>
@@ -89,6 +90,20 @@ const RestaurantDetail = () => {
           </div>
         </div>
       </div>
+
+      <div className="flex justify-center items-center w-full py-2">
+        <div className="w-[900px]">
+          {categoryData.map((data) => (
+            <div key={data.categoryId} className="w-full p-4">
+              <p className="bg-gray-200 p-4 text-xl">{data.category}</p>
+              {data.items.map((data) => (
+                <CategoryFoodDesc key={data.productId} data={data} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      
     </div>
   );
 };
