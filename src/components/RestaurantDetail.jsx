@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { IoFastFood } from "react-icons/io5";
+import { IoPin } from "react-icons/io5";
+
 //ShortName Cuisine Address1 VendorCoverImageName MinimumOrderAmount ServiceCharge VAT VendorLogoImageName
 const RestaurantDetail = () => {
   // "https://foodmandu.com/webapi/api/vendor/GetVendorDetail?VendorId=" +
@@ -42,11 +45,50 @@ const RestaurantDetail = () => {
 
   return (
     <div>
-      <img
-        src={vendorData.VendorCoverImageName}
-        alt=""
-        className="h-[512px] w-full bg-cover"
-      />
+      <div className="relative">
+        <img
+          src={vendorData.VendorCoverImageName}
+          alt=""
+          className="h-[512px] w-full bg-cover"
+        />
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+
+        <div className="container absolute bottom-14 right-0">
+          <div className="flex gap-4 ">
+            <img
+              src={vendorData.VendorLogoImageName}
+              alt=""
+              className="h-32 w-22"
+            />
+            <div className="text-xl text-white flex flex-col gap-2 justify-center">
+              <div className="flex gap-2">
+                <IoFastFood />
+                <p className="text-white">{vendorData.ShortName}</p>
+              </div>
+              <div className="flex gap-2">
+                <IoPin />
+                <p>{vendorData.Address1}</p>
+              </div>
+            </div>
+          </div>
+          <div className="text-white  mt-4 flex flex-col gap-4">
+            <div>
+              <p>Minimum order</p>
+              <p>Rs.{vendorData.MinimumOrderAmount}</p>
+            </div>
+            <div className="flex gap-4">
+              <div>
+                <p>Additional Service Charge</p>
+                <p>Rs.{vendorData.ServiceCharge}</p>
+              </div>{" "}
+              <div>
+                <p>Additional Vat</p>
+                <p>Rs.{vendorData.VAT}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
