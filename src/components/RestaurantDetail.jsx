@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { IoFastFood } from "react-icons/io5";
 import { IoPin } from "react-icons/io5";
 import CategoryFoodDesc from "./CategoryFoodDesc";
+import { FaArrowCircleUp, FaArrowCircleDown } from "react-icons/fa";
 
 //ShortName Cuisine Address1 VendorCoverImageName MinimumOrderAmount ServiceCharge VAT VendorLogoImageName
 const RestaurantDetail = () => {
@@ -12,6 +13,7 @@ const RestaurantDetail = () => {
   const [categoryData, setCategoryData] = useState([]);
   const vendorUrlId = useParams();
   const { id } = vendorUrlId;
+  const [showDescID, setShowDescId] = useState("");
 
   const getVendorDetail = async (id) => {
     try {
@@ -35,6 +37,13 @@ const RestaurantDetail = () => {
       setCategoryData(jsonData);
     } catch (e) {
       console.log(e);
+    }
+  };
+  const handleShowDesc = (id) => {
+    if (showDescID === id) {
+      setShowDescId(null);
+    } else {
+      setShowDescId(id);
     }
   };
 
@@ -95,15 +104,32 @@ const RestaurantDetail = () => {
         <div className="w-[900px]">
           {categoryData.map((data) => (
             <div key={data.categoryId} className="w-full p-4">
-              <p className="bg-gray-200 p-4 text-xl">{data.category}</p>
-              {data.items.map((data) => (
-                <CategoryFoodDesc key={data.productId} data={data} />
-              ))}
+              <div className="flex justify-between bg-gray-200 p-4 text-xl">
+                <p className="">{data.category}</p>
+                <div
+                  onClick={() => {
+                    handleShowDesc(data.categoryId);
+                  }}
+                  className="flex gap-4"
+                >
+                  {showDescID === data.categoryId ? (
+                    <FaArrowCircleUp />
+                  ) : (
+                    <FaArrowCircleDown />
+                  )}
+                </div>
+              </div>
+              {showDescID === data.categoryId && (
+                <span>
+                  {data.items.map((data) => (
+                    <CategoryFoodDesc key={data.productId} data={data} />
+                  ))}
+                </span>
+              )}
             </div>
           ))}
         </div>
       </div>
-      
     </div>
   );
 };
