@@ -15,8 +15,6 @@ const Restaurants = () => {
   const longitude = localStorage.getItem("longitude");
   const latitude = localStorage.getItem("latitude");
   const zoneId = localStorage.getItem("zoneId");
-  
-  
 
   const fetchRestaurants = async () => {
     const data = await fetch(
@@ -52,6 +50,7 @@ const Restaurants = () => {
               localStorage.setItem("latitude", 27.7026754);
               localStorage.setItem("longitude", 85.3191018);
               localStorage.setItem("zoneId", 1);
+              setShow(!show);
             }}
             className="p-2"
           >
@@ -62,6 +61,7 @@ const Restaurants = () => {
               localStorage.setItem("latitude", 27.6773968);
               localStorage.setItem("longitude", 85.406957);
               localStorage.setItem("zoneId", 2);
+              setShow(!show);
             }}
             className="border-y-2 p-2"
           >
@@ -72,6 +72,7 @@ const Restaurants = () => {
               localStorage.setItem("latitude", 28.208417);
               localStorage.setItem("longitude", 83.9554362);
               localStorage.setItem("zoneId", 3);
+              setShow(!show);
             }}
             className="p-2"
           >
