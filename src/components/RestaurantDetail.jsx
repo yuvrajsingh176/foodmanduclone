@@ -51,7 +51,6 @@ const RestaurantDetail = () => {
     getVendorDetail(id);
     getCategoryData(id);
   }, []);
-  console.log(categoryData);
 
   return (
     <div>
